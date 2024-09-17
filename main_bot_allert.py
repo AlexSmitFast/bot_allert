@@ -101,9 +101,9 @@ def main() -> None:
         bot.send_message(ADIMIN_ID_TG,f'АЛЯ УЛЮ')
     except Exception as e:
         telega_error (e)
-
-    subprocess.call("TASKKILL /f  /IM  CHROME.EXE")
-    subprocess.call("TASKKILL /f  /IM  CHROMEDRIVER.EXE")
+    if os.name == 'nt':
+        subprocess.call("TASKKILL /f  /IM  CHROME.EXE")
+        subprocess.call("TASKKILL /f  /IM  CHROMEDRIVER.EXE")
 
     if os.path.isfile('df_oper.csv'):
         g_df = pd.read_csv ('df_oper.csv')
